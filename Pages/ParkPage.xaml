@@ -1,0 +1,115 @@
+﻿<Page x:Class="Rudenko_praktika.Pages.ParkPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Rudenko_praktika.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="570" d:DesignWidth="1184"
+      Loaded="Page_Loaded">
+
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="305"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="AddBTN"
+        Click="AddBTN_CLK"
+        Grid.Column="0" Grid.Row="0"
+        Background="#D1EEFC"
+        HorizontalAlignment="Left" VerticalAlignment="Center"
+        Margin="10 0 0 0">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/images/add_icon.ico" 
+                        Width="20"/>
+                <TextBlock Text="Добавить парк"
+                        VerticalAlignment="Center"
+                        Margin="5 0 0 0"
+                        FontSize="16"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="ExcelBTN"
+        Click="ExcelBTN_CLK"
+        Grid.Column="0" Grid.Row="0"
+        Background="#B5D5CA"
+        HorizontalAlignment="Right" VerticalAlignment="Center"
+        Margin="10 0 0 0">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/images/excel_icon.ico"
+                Width="20"/>
+                <TextBlock Text="Выгрузить отчет в Excel"
+                VerticalAlignment="Center"
+                Margin="5 0 0 0"
+                FontSize="16"/>
+            </StackPanel>
+        </Button>
+
+        <TextBlock Text="Название парка:"
+                Grid.Column="1" Grid.Row="0"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                FontSize="16"/>
+        <TextBox 
+            TextChanged="Search_TextChanged"
+            Panel.ZIndex="0"
+            Grid.Column="2" Grid.Row="0"
+            Width="300" Height="35"
+            HorizontalAlignment="Right" VerticalAlignment="Center"
+            Margin="5 0 0 0"
+            Padding="0 0 30 0"/>
+
+        <ListView x:Name="ParkList" HorizontalContentAlignment="Stretch"
+                  Grid.ColumnSpan="3" Grid.Row="1"
+                  FontSize="14" Foreground="Black" SizeChanged="ParkList_SizeChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Название" 
+                                    DisplayMemberBinding="{Binding ParkName}"/>
+                    <GridViewColumn Header="Площадь" Width="Auto"
+                                    DisplayMemberBinding="{Binding ParkArea,StringFormat={}{0} га}"/>
+                    <GridViewColumn Header="Плотность посадки" Width="Auto"
+                                    DisplayMemberBinding="{Binding PlantingDensity}"/>
+                    <GridViewColumn Header="Часы работы" Width="Auto"
+                                    DisplayMemberBinding="{Binding Schedule}"/>
+                    <GridViewColumn Header="Адрес" Width="Auto"
+                                    DisplayMemberBinding="{Binding Address}"/>
+                    <GridViewColumn Header="Телефон" Width="Auto"
+                                    DisplayMemberBinding="{Binding PhoneView}"/>
+                    <GridViewColumn Header="Сайт" Width="Auto"
+                                    DisplayMemberBinding="{Binding WebsiteView}"/>
+                </GridView>
+            </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu x:Name="contextMenu">
+                    <MenuItem Header="Редактировать"
+                              x:Name="EditMI"
+                              Click="EditMI_CLK">
+                        <MenuItem.Icon>
+                            <Image Source="/images/edit_icon.ico" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Проект насаждений"
+                              x:Name="MoreMI"
+                              Click="MoreMI_CLK">
+                        <MenuItem.Icon>
+                            <Image Source="/images/details_icon.ico" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Удалить"
+                              x:Name="DeleteMI"
+                              Click="DeleteMI_CLK">
+                        <MenuItem.Icon>
+                            <Image Source="/images/delete_icon.ico" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+
+    </Grid>
+</Page>

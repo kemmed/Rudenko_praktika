@@ -1,0 +1,168 @@
+﻿<Window x:Class="Rudenko_praktika.Windows.Edit.EditParkWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Rudenko_praktika.Windows.Edit"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Style="{StaticResource {x:Type Window}}"
+        Closed="Window_Closed"
+        Title="Редактирование информации о парке" Height="600" Width="800">
+    <Grid Margin="15 0 15 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="350"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Название"
+                Grid.ColumnSpan="1" Grid.Row="0"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                FontSize="16"/>
+        <TextBox x:Name="NameTB"
+                Text="{Binding ParkName}"
+                VerticalContentAlignment="Center" 
+                Grid.ColumnSpan="2" Grid.Row="1"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Width="350" Height="35"
+                Padding="0 0 25 0"/>
+
+        <TextBlock 
+                Text="Площадь"
+                Grid.ColumnSpan="1" Grid.Row="2"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                FontSize="16"/>
+        <TextBox x:Name="AreaTB"
+                Text="{Binding ParkArea}"
+                PreviewTextInput="Area_PreviewTextInput"
+                Grid.ColumnSpan="2" Grid.Row="3"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Width="350" Height="35"/>
+
+        <TextBlock Text="Плотность посадки"
+                Grid.ColumnSpan="2" Grid.Row="4"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                FontSize="16"/>
+        <ComboBox x:Name="PlantingDensityCB" 
+                Grid.ColumnSpan="2" Grid.Row="5"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Width="350" Height="35"
+                VerticalContentAlignment="Center" FontSize="16"
+                BorderBrush="Black" BorderThickness="1">
+            <ComboBoxItem Content="высокая"/>
+            <ComboBoxItem Content="средняя"/>
+            <ComboBoxItem Content="низкая"/>
+        </ComboBox>
+        
+        <TextBlock Text="Время открытия (необязательно)"
+                Grid.ColumnSpan="2" Grid.Row="6"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                FontSize="16"/>
+        <TextBox x:Name="OpenTB"
+                Text="{Binding ParkOpening, StringFormat='HH:mm'}"
+                PreviewTextInput="TimeTB_PreviewTextInput"
+                Grid.ColumnSpan="2" Grid.Row="7"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Width="350" Height="35"/>
+
+        <TextBlock Text="Время закрытия (необязательно)"
+                Grid.ColumnSpan="1" Grid.Row="8"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                FontSize="16"/>
+        <TextBox x:Name="CloseTB"
+                Text="{Binding ParkClosure, StringFormat='HH:mm'}"
+                PreviewTextInput="TimeTB_PreviewTextInput"
+                Grid.ColumnSpan="2" Grid.Row="9"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Width="350" Height="35"/>
+
+
+        <TextBlock 
+                Text="Сайт (необязательно)"
+                Grid.ColumnSpan="1" Grid.Row="10"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                FontSize="16"/>
+        <TextBox x:Name="WebsiteTB"
+                Text="{Binding Website}"
+                Grid.ColumnSpan="2" Grid.Row="11"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Width="350" Height="35"/>
+        
+        <TextBlock Text="Город"
+                Grid.Column="2" Grid.Row="0"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                FontSize="16"/>
+        <TextBox x:Name="CityTB"
+                Text="{Binding City}"
+                Grid.Column="2" Grid.Row="1"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Width="350" Height="35"/>
+
+        <TextBlock Text="Улица (необязательно)"
+                Grid.Column="2" Grid.Row="2"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                FontSize="16"/>
+        <TextBox x:Name="StreetTB"
+                Text="{Binding Street}"
+                Grid.Column="2" Grid.Row="3"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Width="350" Height="35"/>
+
+        <TextBlock Text="Номер строения (необязательно)"
+                Grid.Column="2" Grid.Row="4"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                FontSize="16"/>
+        <TextBox x:Name="BuildingTB"
+                Text="{Binding Building}"
+                Grid.Column="2" Grid.Row="5"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Width="350" Height="35"/>
+
+        <TextBlock Text="Индекс"
+                Grid.Column="2" Grid.Row="6"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                FontSize="16"/>
+        <TextBox x:Name="IndexTB"
+                Text="{Binding Index}"
+                 PreviewTextInput="IndexTB_PreviewTextInput"
+                Grid.Column="2" Grid.Row="7"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Width="350" Height="35"/>
+        <TextBlock Text="Контактный телефон (необязательно)"
+                Grid.Column="2" Grid.Row="8"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                FontSize="16"/>
+        <TextBox x:Name="PhoneTB"
+                Text="{Binding PhoneNumber}"
+                TextChanged="PhoneTB_TextChanged"
+                Grid.Column="2" Grid.Row="9"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Width="350" Height="35"/>
+
+        <Button Content="Отмена" Click="CancelBTN_CLK"
+            Grid.Column="2" Grid.Row="12"
+            Background="#E0A9AF"
+            HorizontalAlignment="Center" VerticalAlignment="Center"
+            Margin="60 0 0 0"/>
+        <Button Content="Сохранить" Click="SaveBTN_CLK"
+            Grid.Column="2" Grid.Row="12"
+            Background="#B5D5CA"
+            HorizontalAlignment="Right" VerticalAlignment="Center"
+            />
+    </Grid>
+</Window>
